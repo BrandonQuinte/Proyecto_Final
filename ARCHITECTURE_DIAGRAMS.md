@@ -8,27 +8,27 @@ Documento complementario con diagramas detallados de la arquitectura del sistema
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│                          SISTEMA TODO LIST                               │
-│                        (Fullstack Application)                           │
+│                          SISTEMA TODO LIST                                │
+│                        (Fullstack Application)                            │
 │                                                                           │
-│  Desarrollado con:                                                       │
-│  • Frontend: React 18.2 + Vite 5                                        │
-│  • Backend: Node.js 20 + Express 4.18                                   │
-│  • Database: MySQL                                                       │
-│  • Deployment: Vercel (FE), Render (BE + DB)                           │
+│  Desarrollado con:                                                        │
+│  • Frontend: React 18.2 + Vite 5                                          │
+│  • Backend: Node.js 20 + Express 4.18                                     │
+│  • Database: MySQL                                                        │
+│  • Deployment: Vercel (FE), Render (BE + DB)                              │
 │                                                                           │
 └───────────────────────────────────────────────────────────────────────────┘
-              △              △              △              △
-              │              │              │              │
-    ┌─────────┴────┐  ┌──────┴─────┐  ┌────┴──────┐  ┌─────┴──────┐
-    │              │  │            │  │           │  │            │
-┌───▼──────┐  ┌────▼──────┐  ┌────▼──┐  ┌───▼───────┐
-│   USER   │  │ DEVELOPER │  │  VCS  │  │ MONITORING│
-│          │  │           │  │(GitHub)  │            │
-│• Browser │  │• Local Dev│  │         │ • Vercel  │
-│• Mobile  │  │• IDE      │  │• Git   │ • Render  │
-│• Desktop │  │• CLI      │  │• Actions│ • Logs    │
-└───┬──────┘  └────┬──────┘  └────┬──┘  └───┬───────┘
+              △             △             △              
+              │              │              │              
+    ┌─────────┴────┐         ┴────┐         ┴──┐  
+    │              │              │            │            
+┌───▼──────┐  ┌────▼──────┐  ┌────▼─────┐  ┌───▼───────┐
+│   USER   │  │ DEVELOPER │  │  VCS     │  │ MONITORING│
+│          │  │           │  │(GitHub)  │  │           │
+│• Browser │  │• Local Dev│  │          │  │ • Vercel  │
+│• Mobile  │  │• IDE      │  │• Git     │  │ • Render  │
+│• Desktop │  │• CLI      │  │• Actions │  │ • Logs    │
+└───┬──────┘  └────┬──────┘  └─────┬────┘  └───┬───────┘
     │              │               │         │
     └──────────────┴───────────────┴─────────┘
            Interacción
@@ -69,27 +69,27 @@ USUARIO/BROWSER
 │      RENDER BACKEND                       │
 │      (Node.js Express Server)             │
 │                                           │
-│  ┌────────────────────────────────────┐  │
-│  │ Express.js API Server              │  │
-│  │ • CORS enabled                     │  │
-│  │ • Routes: /api/todos               │  │
-│  │ • Port: 4000                       │  │
-│  │ • Node.js 20                       │  │
-│  └────────────────────────────────────┘  │
+│  ┌────────────────────────────────────┐   │
+│  │ Express.js API Server              │   │
+│  │ • CORS enabled                     │   │
+│  │ • Routes: /api/todos               │   │
+│  │ • Port: 4000                       │   │
+│  │ • Node.js 20                       │   │
+│  └────────────────────────────────────┘   │
 │           │                               │
-│           │ Sequelize ORM                │
-│           │ MySQL Connection             │
+│           │ Sequelize ORM                 │
+│           │ MySQL Connection              │
 │           ▼                               │
-│  ┌────────────────────────────────────┐  │
-│  │ MySQL Database (Render)            │  │
-│  │ • Database: todos_db               │  │
-│  │ • Table: todos                     │  │
-│  │ • Backups: automatic               │  │
-│  │ • SSL/TLS encryption               │  │
-│  └────────────────────────────────────┘  │
+│  ┌────────────────────────────────────┐   │
+│  │ MySQL Database (Render)            │   │
+│  │ • Database: todos_db               │   │
+│  │ • Table: todos                     │   │
+│  │ • Backups: automatic               │   │
+│  │ • SSL/TLS encryption               │   │
+│  └────────────────────────────────────┘   │
 │                                           │
 │ URL:                                      │
-│ proyecto-final-rqns.onrender.com         │
+│ proyecto-final-rqns.onrender.com          │
 └───────────────────────────────────────────┘
 ```
 
@@ -220,7 +220,7 @@ USUARIO INTERACTION:
 │ TodoForm.jsx                            │
 │                                         │
 │ const [title, setTitle] = useState('')  │
-│ setTitle('Comprar leche')              │
+│ setTitle('Comprar leche')               │
 └────────┬────────────────────────────────┘
          │ Validación local
          │ if (!title.trim()) return;
@@ -231,9 +231,9 @@ USUARIO INTERACTION:
 ┌─────────────────────────────────────────┐
 │ handleSubmit() ejecuta                  │
 │                                         │
-│ 1. Prevenir form refresh               │
-│ 2. Validar título no vacío             │
-│ 3. Preparar payload JSON               │
+│ 1. Prevenir form refresh                │
+│ 2. Validar título no vacío              │
+│ 3. Preparar payload JSON                │
 └────────┬────────────────────────────────┘
          │
          │ Axios HTTP POST
@@ -246,79 +246,79 @@ USUARIO INTERACTION:
     ┌────────────────────────────────────────────────────────┐
     │ NETWORK TRANSMISSION (100-200ms)                       │
     │                                                        │
-    │ POST https://proyecto-final-rqns.onrender.com/api/todos
-    │ Headers: Content-Type: application/json               │
+    │ POST https://proyecto-final-rqns.onrender.com/api/todos│
+    │ Headers: Content-Type: application/json                │
     │ Body: JSON payload                                     │
     └────────────────────────────────────────────────────────┘
          │
          ▼
 ┌──────────────────────────────────────────────────────┐
-│ BACKEND - todos.js (Route Handler)                  │
+│ BACKEND - todos.js (Route Handler)                   │
 │                                                      │
-│ router.post('/', todoController.createTodo)         │
+│ router.post('/', todoController.createTodo)          │
 │                                                      │
-│ Step 1: Parse request body                          │
-│ Step 2: Extract { title, description }              │
-│ Step 3: Pass to controller                          │
+│ Step 1: Parse request body                           │
+│ Step 2: Extract { title, description }               │
+│ Step 3: Pass to controller                           │
 └──────────────────────┬───────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────┐
-│ BACKEND - todosController.js                        │
+│ BACKEND - todosController.js                         │
 │                                                      │
-│ exports.createTodo = async (req, res) => {          │
-│   const { title, description } = req.body;          │
+│ exports.createTodo = async (req, res) => {           │
+│   const { title, description } = req.body;           │
 │                                                      │
-│   // Validación backend                             │
-│   if (!title || title.trim() === '') {             │
-│     return res.status(400).json({                   │
-│       error: 'El título es obligatorio'             │
+│   // Validación backend                              │
+│   if (!title || title.trim() === '') {               │
+│     return res.status(400).json({                    │
+│       error: 'El título es obligatorio'              │
 │     });                                              │
 │   }                                                  │
 │                                                      │
 │   // Crear en BD                                     │
-│   const todo = await Todo.create({                  │
-│     title: title.trim(),                            │
-│     description: description || null,               │
-│     status: 'pending'                               │
+│   const todo = await Todo.create({                   │
+│     title: title.trim(),                             │
+│     description: description || null,                │
+│     status: 'pending'                                │
 │   });                                                │
 │                                                      │
 │   // Responder                                       │
-│   res.status(201).json(todo);                       │
+│   res.status(201).json(todo);                        │
 │ }                                                    │
 └──────────────────────┬───────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────┐
-│ DATABASE - Sequelize & MySQL                        │
+│ DATABASE - Sequelize & MySQL                         │
 │                                                      │
-│ SQL Generated by Sequelize:                         │
+│ SQL Generated by Sequelize:                          │
 │                                                      │
 │ INSERT INTO todos                                    │
 │   (title, description, status, created_at, updated_at)
 │ VALUES                                               │
-│   ('Comprar leche', NULL, 'pending', NOW(), NOW()) │
+│   ('Comprar leche', NULL, 'pending', NOW(), NOW())   │
 │                                                      │
 │ MySQL Response:                                      │
 │ - Inserts row                                        │
-│ - Generates ID: 42 (AUTO_INCREMENT)                 │
-│ - Returns 1 (row affected)                          │
+│ - Generates ID: 42 (AUTO_INCREMENT)                  │
+│ - Returns 1 (row affected)                           │
 └──────────────────────┬───────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────┐
-│ BACKEND - Return Response                           │
+│ BACKEND - Return Response                            │
 │                                                      │
-│ HTTP/1.1 201 Created                                │
-│ Content-Type: application/json                      │
+│ HTTP/1.1 201 Created                                 │
+│ Content-Type: application/json                       │
 │                                                      │
 │ {                                                    │
 │   "id": 42,                                          │
 │   "title": "Comprar leche",                          │
 │   "description": null,                               │
 │   "status": "pending",                               │
-│   "createdAt": "2025-12-10T12:00:00Z",             │
-│   "updatedAt": "2025-12-10T12:00:00Z"              │
+│   "createdAt": "2025-12-10T12:00:00Z",               │
+│   "updatedAt": "2025-12-10T12:00:00Z"                │
 │ }                                                    │
 └──────────────────────┬───────────────────────────────┘
                        │
@@ -328,61 +328,61 @@ USUARIO INTERACTION:
                        │
                        ▼
 ┌──────────────────────────────────────────────────────┐
-│ FRONTEND - Axios Response Handler                   │
+│ FRONTEND - Axios Response Handler                    │
 │                                                      │
-│ API.interceptors.response.use(                      │
+│ API.interceptors.response.use(                       │
 │   (response) => {                                    │
-│     return response.data;  // ← Retorna data        │
+│     return response.data;  // ← Retorna data         │
 │   }                                                  │
 │ )                                                    │
 │                                                      │
-│ const response = await createTodo(newTodo);         │
-│ // response = { id: 42, title: ..., status: ... }  │
+│ const response = await createTodo(newTodo);          │
+│ // response = { id: 42, title: ..., status: ... }    │
 └──────────────────────┬───────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────┐
-│ FRONTEND - Home.jsx (State Update)                  │
+│ FRONTEND - Home.jsx (State Update)                   │
 │                                                      │
-│ const [todos, setTodos] = useState([]);             │
+│ const [todos, setTodos] = useState([]);              │
 │                                                      │
-│ const handleAddTodo = async (newTodo) => {          │
+│ const handleAddTodo = async (newTodo) => {           │
 │   try {                                              │
-│     const response = await createTodo(newTodo);     │
-│     // Actualizar estado                            │
-│     setTodos([...todos, response]);                 │
-│     // Limpiar formulario                           │
-│     setFormData({ title: '', description: '' });   │
-│   } catch (error) {                                 │
-│     console.error('Error:', error);                 │
+│     const response = await createTodo(newTodo);      │
+│     // Actualizar estado                             │
+│     setTodos([...todos, response]);                  │
+│     // Limpiar formulario                            │
+│     setFormData({ title: '', description: '' });     │
+│   } catch (error) {                                  │
+│     console.error('Error:', error);                  │
 │   }                                                  │
 │ }                                                    │
 └──────────────────────┬───────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────┐
-│ REACT RECONCILIATION & RE-RENDER                    │
+│ REACT RECONCILIATION & RE-RENDER                     │
 │                                                      │
-│ 1. setTodos() dispara setState                      │
-│ 2. React compara old vs new virtual DOM             │
-│ 3. Detecta nuevo item en lista                      │
-│ 4. Agrega <TodoItem> al DOM                         │
-│ 5. CSS styles se aplican automáticamente            │
+│ 1. setTodos() dispara setState                       │
+│ 2. React compara old vs new virtual DOM              │
+│ 3. Detecta nuevo item en lista                       │
+│ 4. Agrega <TodoItem> al DOM                          │
+│ 5. CSS styles se aplican automáticamente             │
 └──────────────────────┬───────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────┐
 │ ✅ TAREA VISIBLE EN LA UI                           │
 │                                                      │
-│ Nueva tarea renderizada:                            │
+│ Nueva tarea renderizada:                             │
 │                                                      │
-│ ┌─────────────────────────────────┐                │
-│ │ ◐ Comprar leche                 │ ← status     │
-│ │                                 │                │
-│ │ [✎ Editar] [✓ Completar] [✕ Eliminar]         │
-│ └─────────────────────────────────┘                │
+│ ┌─────────────────────────────────┐                  │
+│ │ ◐ Comprar leche                 │ ← status        │
+│ │                                 │                  │
+│ │ [✎ Editar] [✓ Completar] [✕ Eliminar]            │
+│ └─────────────────────────────────┘                  │
 │                                                      │
-│ ✅ Todo el ciclo completado                        │
+│ ✅ Todo el ciclo completado                         │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -468,7 +468,7 @@ INDEX (status)
                 ▼                                        ▼
          ┌──────────────────────┐            ┌──────────────────────┐
          │ Vercel Deployment    │            │ Render Deployment    │
-         │ ✅ LIVE (2-3 min)    │            │ ✅ LIVE (3-4 min)    │
+         │ ✅ LIVE (2-3 min)    │            │ ✅ LIVE (3-4 min)   │
          │                      │            │                      │
          │ proyecto-final-      │            │ proyecto-final-      │
          │ 9z34.vercel.app      │            │ rqns.onrender.com    │
@@ -486,28 +486,28 @@ Resultado:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ CAPA                │ TECNOLOGÍA        │ VERSION │ PROPÓSITO    │
+│ CAPA                │ TECNOLOGÍA        │ VERSION │ PROPÓSITO   │
 ├─────────────────────────────────────────────────────────────────┤
-│ PRESENTACIÓN (UI)   │ React             │ 18.2    │ Components   │
-│                     │ CSS 3             │ -       │ Styling      │
-│                     │ Vite              │ 5.0     │ Build Tool   │
+│ PRESENTACIÓN (UI)   │ React             │ 18.2    │ Components  │
+│                     │ CSS 3             │ -       │ Styling     │
+│                     │ Vite              │ 5.0     │ Build Tool  │
 ├─────────────────────────────────────────────────────────────────┤
-│ CONSUMO API         │ Axios             │ 1.6+    │ HTTP Client  │
+│ CONSUMO API         │ Axios             │ 1.6+    │ HTTP Client │
 ├─────────────────────────────────────────────────────────────────┤
-│ BACKEND             │ Node.js           │ 20.x    │ Runtime      │
-│ (Server)            │ Express.js        │ 4.18    │ Web Server   │
+│ BACKEND             │ Node.js           │ 20.x    │ Runtime     │
+│ (Server)            │ Express.js        │ 4.18    │ Web Server  │
 ├─────────────────────────────────────────────────────────────────┤
-│ MAPEO DATOS (ORM)   │ Sequelize         │ 6.37    │ ORM Mapper   │
+│ MAPEO DATOS (ORM)   │ Sequelize         │ 6.37    │ ORM Mapper  │
 ├─────────────────────────────────────────────────────────────────┤
-│ BASE DATOS          │ MySQL             │ 8.0+    │ RDBMS        │
-│                     │ MySQL2            │ 3.15    │ Driver       │
+│ BASE DATOS          │ MySQL             │ 8.0+    │ RDBMS       │
+│                     │ MySQL2            │ 3.15    │ Driver      │
 ├─────────────────────────────────────────────────────────────────┤
-│ DEPLOYMENT FE       │ Vercel            │ -       │ CDN Hosting  │
-│ DEPLOYMENT BE       │ Render            │ -       │ App Hosting  │
-│ DEPLOYMENT DB       │ Render MySQL      │ -       │ DB Hosting   │
+│ DEPLOYMENT FE       │ Vercel            │ -       │ CDN Hosting │
+│ DEPLOYMENT BE       │ Render            │ -       │ App Hosting │
+│ DEPLOYMENT DB       │ Render MySQL      │ -       │ DB Hosting  │
 ├─────────────────────────────────────────────────────────────────┤
-│ CI/CD               │ GitHub Actions    │ v4      │ Automation   │
-│                     │ Git               │ 2.x+    │ VCS          │
+│ CI/CD               │ GitHub Actions    │ v4      │ Automation  │
+│                     │ Git               │ 2.x+    │ VCS         │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -519,16 +519,16 @@ Resultado:
 ┌────────────────────────────────────────────────────────────┐
 │ COMPONENTE          │ MEDIDAS DE SEGURIDAD                 │
 ├────────────────────────────────────────────────────────────┤
-│ Frontend (React)    │ • HTTPS obligatorio (Vercel)        │
+│ Frontend (React)    │ • HTTPS obligatorio (Vercel)         │
 │                     │ • CORS prevención de XSS             │
 │                     │ • Validación local de inputs         │
 │                     │ • No almacenar datos sensibles       │
 ├────────────────────────────────────────────────────────────┤
-│ API (Express)       │ • CORS whitelist (solo Vercel)      │
+│ API (Express)       │ • CORS whitelist (solo Vercel)       │
 │                     │ • Validación de entrada              │
-│                     │ • SQL Injection prevention (ORM)    │
+│                     │ • SQL Injection prevention (ORM)     │
 │                     │ • Error handling sin data leaks      │
-│                     │ • HTTPS en producción (Render)      │
+│                     │ • HTTPS en producción (Render)       │
 ├────────────────────────────────────────────────────────────┤
 │ Base de Datos       │ • Conexión SSL/TLS                   │
 │                     │ • Variables de entorno protegidas    │
@@ -563,23 +563,23 @@ Resultado:
 ├──────────────────┼──────────────────────┼──────────────────────┤
 │ Build Tool       │ Vite dev server (HMR)│ Vite production build│
 ├──────────────────┼──────────────────────┼──────────────────────┤
-│ Deploy          │ Manual (npm run dev) │ Automático (Git push)│
+│ Deploy          │ Manual (npm run dev) │ Automático (Git push) │
 ├──────────────────┼──────────────────────┼──────────────────────┤
-│ Logs            │ Console local        │ Vercel/Render logs   │
+│ Logs            │ Console local        │ Vercel/Render logs    │
 ├──────────────────┼──────────────────────┼──────────────────────┤
-│ SSL             │ No (HTTP)            │ Sí (HTTPS)           │
+│ SSL             │ No (HTTP)            │ Sí (HTTPS)            │
 ├──────────────────┼──────────────────────┼──────────────────────┤
-│ Environment     │ .env.local           │ Environment Variables│
-│ Variables       │                      │ (en plataforma)      │
+│ Environment     │ .env.local           │ Environment Variables │
+│ Variables       │                      │ (en plataforma)       │
 ├──────────────────┼──────────────────────┼──────────────────────┤
-│ Performance     │ Desarrollo (Slower)  │ Optimizado (Faster)  │
+│ Performance     │ Desarrollo (Slower)  │ Optimizado (Faster)   │
 ├──────────────────┼──────────────────────┼──────────────────────┤
-│ Uptime          │ Mientras ejecutas    │ 99.9% (SLA)          │
-│                 │ el servidor local    │                      │
+│ Uptime          │ Mientras ejecutas    │ 99.9% (SLA)           │
+│                 │ el servidor local    │                       │
 ├──────────────────┼──────────────────────┼──────────────────────┤
-│ CDN             │ No                   │ Sí (Vercel Global)   │
+│ CDN             │ No                   │ Sí (Vercel Global)    │
 ├──────────────────┼──────────────────────┼──────────────────────┤
-│ Backups DB      │ Manual               │ Automáticos (Render) │
+│ Backups DB      │ Manual               │ Automáticos (Render)  │
 └──────────────────┴──────────────────────┴──────────────────────┘
 ```
 
