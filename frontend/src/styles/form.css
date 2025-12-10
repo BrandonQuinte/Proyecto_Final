@@ -87,7 +87,6 @@
   position: relative;
   overflow: hidden;
   font-family: "Inter", "Helvetica Neue", sans-serif;
-} overflow: hidden;
 }
 
 .submit-btn::before {
