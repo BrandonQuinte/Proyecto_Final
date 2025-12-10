@@ -30,7 +30,7 @@ export default function TodoItem({ todo, onUpdate, onDelete, onEdit }) {
         {todo.description && <p className="todo-description">{todo.description}</p>}
         <div className="todo-meta">
           <span className={`status-badge ${todo.status}`}>
-            {todo.status === "completed" ? "✓ Completada" : "⏳ Pendiente"}
+            {todo.status === "completed" ? "✓ Completada" : "◐ Pendiente"}
           </span>
           <span className="todo-date">
             {new Date(todo.created_at).toLocaleDateString()}
@@ -40,13 +40,13 @@ export default function TodoItem({ todo, onUpdate, onDelete, onEdit }) {
       
       <div className="todo-actions">
         <button onClick={handleToggleStatus} className="btn-toggle">
-          {todo.status === "completed" ? "↩️ Pendiente" : "✓ Completar"}
+          {todo.status === "completed" ? "↷ Pendiente" : "✓ Completar"}
         </button>
         <button onClick={() => onEdit(todo)} className="btn-edit">
-          ✏️ Editar
+          ✎ Editar
         </button>
         <button onClick={handleDelete} className="btn-delete">
-          🗑️ Eliminar
+          ✕ Eliminar
         </button>
       </div>
     </li>

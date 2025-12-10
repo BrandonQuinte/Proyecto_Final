@@ -35,7 +35,7 @@ export default function Home() {
     <div className="home-container">
       <div className="home-content">
         <div className="header">
-          <h1>📋 Gestor de Tareas</h1>
+          <h1>Gestor de Tareas</h1>
           <p>Organiza tu día, completa tus metas</p>
         </div>
         
