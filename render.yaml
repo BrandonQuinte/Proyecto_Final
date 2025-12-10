@@ -7,15 +7,6 @@ services:
     startCommand: cd backend && npm start
     envVars:
       - key: PORT
-        value: 4000
+        value: "4000"
       - key: NODE_ENV
         value: production
-      - key: DATABASE_URL
-        fromDatabase:
-          name: todos-db
-          property: connectionString
-
-databases:
-  - name: todos-db
-    databaseName: todos_db
-    plan: free
