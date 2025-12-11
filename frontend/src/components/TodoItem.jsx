@@ -43,10 +43,10 @@ export default function TodoItem({ todo, onUpdate, onDelete, onEdit }) {
           {todo.status === "completed" ? "↷ Pendiente" : "✓ Completar"}
         </button>
         <button onClick={() => onEdit(todo)} className="btn-edit">
-          ✎ Editar
+           Editar
         </button>
         <button onClick={handleDelete} className="btn-delete">
-          ✕ Eliminar
+           Eliminar
         </button>
       </div>
     </li>

@@ -24,7 +24,7 @@ const Todo = sequelize.define("Todo", {
   }
 }, {
   tableName: "Todos",
-  timestamps: false   // ⬅️ SUPER IMPORTANTE
+  timestamps: false 
 });
 
 module.exports = Todo;

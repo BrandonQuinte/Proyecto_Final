@@ -21,7 +21,7 @@ async function connectDB() {
 
     return sequelize;
   } catch (error) {
-    console.error("❌ Error al conectar SQLite:", error);
+    console.error(" Error al conectar SQLite:", error);
     process.exit(1);
   }
 }

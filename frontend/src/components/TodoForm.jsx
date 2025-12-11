@@ -46,7 +46,7 @@ export default function TodoForm({ onSuccess, editingTodo = null }) {
 
   return (
     <form onSubmit={handleSubmit} className="todo-form">
-      <h2>{editingTodo ? "✎ Editar Tarea" : "+ Nueva Tarea"}</h2>
+      <h2>{editingTodo ? "Editar Tarea" : "+ Nueva Tarea"}</h2>
       {error && <p className="error-message">{error}</p>}
       
       <input

@@ -26,7 +26,7 @@ async function main() {
 
     await seedTodos();
   } catch (error) {
-    console.error("❌ Error de conexión:", error);
+    console.error(" Error de conexión:", error);
   } finally {
     await sequelize.close();
   }

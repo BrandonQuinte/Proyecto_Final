@@ -21,9 +21,13 @@ async function startBackend() {
   // Rutas
   app.use("/api/todos", require("./routes/todos"));
 
-  // Arrancar servidor
-  app.listen(process.env.PORT, () => {
-    console.log(`Backend corriendo en puerto ${process.env.PORT}`);
+  // Arrancar servidor (usar puerto por defecto si no está en .env)
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => {
+    console.log(`Backend corriendo en puerto ${PORT}`);
+  }).on('error', (err) => {
+    console.error('Error al arrancar el servidor:', err);
+    process.exit(1);
   });
 }
 
